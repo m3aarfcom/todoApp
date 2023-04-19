@@ -8,7 +8,11 @@ just run this commands
 
 
 # docker compose up -d --build
+# docker compose exec php npm install && npm run dev
+# docker compose exec php npm run build
 # docker compose exec php php artisan migrate --seed
+# docker compose exec php php artisan schedule:run  
+ to run the task schedule
 
 
 
