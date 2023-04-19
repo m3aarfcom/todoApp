@@ -6,8 +6,6 @@ use App\Models\Task;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 
 class TasksNotification extends Notification
 {
