@@ -101,7 +101,6 @@
 
 
     @include('tasks.add-modal')
-    @include('tasks.edit-modal')
 @endsection
 
 @section('scripts')
