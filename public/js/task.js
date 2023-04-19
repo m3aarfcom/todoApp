@@ -9,33 +9,6 @@ $('.js-example-basic-single').select2({
 
 
 
-
-// $(document).ready(function () {
-//     $('body').on('click', '#show_modal', function () {
-//         var userURL = $(this).data('url');
-//         var taskId = $(this).data('taskid');
-//         $.get(userURL, function (response) {
-//             //$('#taskId').html("");
-//             console.log(response.users);
-
-//             $('#edit_title').val(response.data.title);
-//             $('#edit_description').val(response.data.description);
-//             $('#edit_due_date').val(response.data.due_date);
-//             $("#edit_priority").append('<option value=' + response.data.priority +
-//                 ' selected >' +
-//                 response.data.priority + '</option>');
-
-//             $('#editModal').modal('show');
-//             document.getElementById("taskId").value = taskId;
-//         })
-//     });
-//     $('body').on('click', '#close_modal', function () {
-//         $('#editModal').modal('hide');
-//     });
-
-// });
-
-
 window.addEventListener('load', function () {
     $(".add-task").validate({
         rules: {

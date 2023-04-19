@@ -58,10 +58,6 @@
                                             @can('update_task')
                                                 <a href="{{ route('task.edit', $task->id) }}" class="btn btn-success"
                                                     title="Edit"> <i class="fa fa-cog"></i> </a>
-                                                {{--  <button id="show_modal" data-url="{{ route('task.edit', $task->id) }}"
-                                                    data-taskid="{{ $task->id }}" class="btn btn-success" title="Edit">
-                                                    <i class="fa fa-cog"></i>
-                                                </button>  --}}
                                                 <a class="btn btn-warning" title="send mail"
                                                     href="{{ route('task.send', $task->id) }}">
                                                     <i class="fa fa-paper-plane"></i>
@@ -111,57 +107,4 @@
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
     <script script src="{{ asset('js/task.js') }}"></script>
-
-
-
-
-    {{--  <script type="text/javascript">
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $("#btn-submit").click(function(e) {
-            e.preventDefault();
-
-            var title = $("#title").val();
-            var description = $("#description").val();
-            var due_date = $("#due_date").val();
-            var priority = $("#priority").val();
-            var user_ids = $("#user_ids").val();
-
-            $.ajax({
-                type: 'POST',
-                url: "{{ route('task.store') }}",
-                data: {
-                    title: title,
-                    description: description,
-                    due_date: due_date,
-                    priority: priority,
-                    user_ids: user_ids,
-                },
-
-                success: function(data) {
-                    if ($.isEmptyObject(data.error)) {
-                        alert(data.success);
-                        location.reload();
-                    } else {
-                        alert('error');
-
-                        printErrorMsg(data.error);
-                    }
-                }
-            });
-
-        });
-
-        function printErrorMsg(msg) {
-            $(".print-error-msg").find("ul").html('');
-            $(".print-error-msg").css('display', 'block');
-            $.each(msg, function(key, value) {
-                $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
-            });
-        }
-    </script>  --}}
 @endsection

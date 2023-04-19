@@ -69,10 +69,6 @@
                             </select>
 
 
-
-
-
-
                             @error('user_ids')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
