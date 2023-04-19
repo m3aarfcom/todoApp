@@ -1,0 +1,67 @@
+version: '3.8'
+services:
+
+  php:
+    build:
+      args:
+        user: Abdelrazek
+        uid: 1000
+      context: .
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - ./:/var/www/
+      - $HOME/.composer/:$HOME/.composer/
+    environment:
+      - "DB_HOST=mysql"
+      - "DB_DATABASE=mindLuster"
+      - "DB_USERNAME=mindLuster"
+      - "DB_PASSWORD=mindLuster" 
+    networks:
+      - service-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: web-server
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "9000:80"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d/
+    networks:
+      - service-network
+
+  mysql:
+    image: mariadb:10.5.8
+    volumes:
+      - mysqldata:/var/lib/mysql
+    environment:
+      - "MYSQL_ROOT_PASSWORD=mindLuster"
+      - "MYSQL_DATABASE=mindLuster"
+      - "MYSQL_USER=mindLuster"
+      - "MYSQL_PASSWORD=mindLuster"
+    ports:
+      - "3309:3306"
+    networks:
+      - service-network
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 9001:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql
+      - UPLOAD_LIMIT=64M
+    networks:
+      - service-network
+
+volumes:
+  mysqldata:
+
+
+networks:
+  service-network:
+    driver: bridge
